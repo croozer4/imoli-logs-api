@@ -1,21 +1,27 @@
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import app from './app';
 
 import config from '@/config/environment';
 import logger from '@/utils/logger';
 import { connectDatabase } from '@/config/database';
+import { seedDatabase } from './config/seed';
+// import logsRouter from '@/modules/logs/logs.router';
+// import usersRouter from '@/modules/users/users.router';
 
-dotenv.config();
 
 const startServer = async (): Promise<void> => {
 	try {
 		await connectDatabase();
+		await seedDatabase();
 
 		const server = app.listen(config.port, () => {
 			logger.info(
 				`Server running in ${config.env} mode at http://${config.host}:${config.port}`,
 			);
 		});
+
+		// app.use('/public/logs', logsRouter);
+		// app.use('/internal/users', usersRouter);
 
 		const shutdown = async (signal: string): Promise<void> => {
 			logger.info(`${signal} received. Shutting down gracefully...`);
