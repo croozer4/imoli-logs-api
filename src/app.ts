@@ -1,16 +1,19 @@
 import express from 'express';
-// import authMiddleware from '@/middleware/auth.middleware';
+import authMiddleware from '@/middleware/auth.middleware';
 import errorHandler from '@/middleware/errorHandler';
+import { requireAdmin, requirePermission } from './middleware/requirePermission';
 
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Auth middleware na wybranych ścieżkach
-// app.use('/public/logs', authMiddleware);
-// app.use('/internal/users', authMiddleware);
+// Protected routes
+// app.use('/public/logs', authMiddleware), requirePermission('read');
+// app.use('/internal/users', authMiddleware), requireAdmin;
+
+app.use('/public/logs', authMiddleware, requirePermission('read'));
+app.use('/internal/users', authMiddleware, requireAdmin);
 
 // Routery podpinaasz tutaj
 // app.use('/public/logs', logsRouter);

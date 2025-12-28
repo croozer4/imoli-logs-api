@@ -98,3 +98,4 @@ pnpm-lock.yaml
 *.local
 *.log.old
 .history/
+tests/.env.test
