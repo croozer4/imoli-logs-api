@@ -1,35 +1,29 @@
-# Create Express App
+# 🚀 Logs API Microservice
 
-> A scalable and well-structured Express.js boilerplate for building modern web applications.
+## Features
+- MongoDB + TypeScript + Express
+- Auth middleware (admin access, reac/create permissions)
+- Seeding database with users.json
+- Parsing events.log and seeding
+- Docker + docker-compose (dev & test)
+- Jest tests
+- Internal logging all auth requests
 
-### Start the Application
+## Local
+`yarn install`
 
-Navigate to the newly created project directory and install dependencies:
+### Development
+`docker-compose up app`
 
-```bash
-npm install
-# or
-yarn
-# or
-pnpm install
-# or
-bun install
-```
+### Tests
+`yarn test`
 
-**First, run the development server:**:
+## Docker
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Development
+`docker-compose up app`
 
-Your application will be running at `http://localhost:4000` by default.
+### Tests
+`docker-compose -f docker-compose.test.yml up test`
 
-### Feedback
 
-If you encounter any issues or have suggestions for improvement, feel free to open an issue on [GitHub](https://github.com/gausalmunirtushar/create-express-app/issues).
