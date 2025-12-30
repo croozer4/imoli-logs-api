@@ -5,6 +5,7 @@ import config from '@/config/environment';
 import logger from '@/utils/logger';
 import { connectDatabase } from '@/config/database';
 import { seedDatabase } from './config/seed';
+import { parseLogs } from './config/parse';
 // import logsRouter from '@/modules/logs/logs.router';
 // import usersRouter from '@/modules/users/users.router';
 
@@ -13,6 +14,7 @@ const startServer = async (): Promise<void> => {
 	try {
 		await connectDatabase();
 		await seedDatabase();
+		await parseLogs();
 
 		const server = app.listen(config.port, () => {
 			logger.info(

@@ -8,7 +8,7 @@ export const seedDatabase = async (): Promise<void> => {
         const count = await User.countDocuments();
 
         if (count > 0) {
-            logger.info('Database already seeded. Skipping seeding process.');
+            logger.info('Database Users already seeded. Skipping seeding process.');
             return;
         }
 
