@@ -1,16 +1,19 @@
 import 'dotenv/config';
 import mongoose from 'mongoose';
+import { seedDatabase } from '../src/config/seed';
+import { parseLogs } from '../src/config/parse'; 
 
-// import mongoose from 'mongoose';
+beforeAll(async () => {
+  await mongoose.connect(process.env.MONGODB_URI!);
+  console.log('✅ MongoDB connected for tests');
 
-// beforeAll(async () => {
-//   await mongoose.connect(process.env.MONGODB_URI!);
-// });
+  await seedDatabase();
+  await parseLogs();
+  console.log('✅ Database seeded and logs parsed for tests');
 
-// afterAll(async () => {
-//   await mongoose.connection.close();
-// });
+});
 
 afterAll(async () => {
   await mongoose.disconnect();
+  console.log('✅ MongoDB disconnected');
 });

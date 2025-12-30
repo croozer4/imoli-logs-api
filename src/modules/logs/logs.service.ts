@@ -4,7 +4,6 @@ import {
 	findLogByUuid,
 	findLogsByTimestampRange,
 	Type,
-	CreateLogInput,
 } from './logs.repository';
 
 export interface CreateLogRequest {

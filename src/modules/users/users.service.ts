@@ -1,7 +1,6 @@
 import { randomUUID } from 'crypto';
 import {
     createUser,
-    findUserByToken,
     findUserByUsername,
     Permission,
 } from './users.repository';

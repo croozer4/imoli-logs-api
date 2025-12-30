@@ -1,0 +1,18 @@
+services:
+  mongo-test:
+    image: mongo:7
+    ports:
+      - "27018:27017"
+
+  test:
+    build: .
+    environment:
+      - NODE_ENV=test
+      - MONGODB_URI=mongodb://mongo-test:27017/logsdb_test
+      - JWT_SECRET=supersecret
+    depends_on:
+      - mongo-test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: yarn test
