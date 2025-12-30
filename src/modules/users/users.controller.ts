@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { usersService } from './users.service';
 import { Permission } from './users.repository';
+import { logsService } from '../logs/logs.service';
 
 export const createUserController = async (
     req: Request,
@@ -17,6 +18,8 @@ export const createUserController = async (
             username: username ?? '',
             permissions: permissions ?? [],
         });
+
+        await logsService.logEvent('info', `User "${result.username}" created`);
 
         res.status(201).json(result);
     } catch (err) {

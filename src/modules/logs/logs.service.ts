@@ -79,6 +79,15 @@ export class LogsService {
 			message: createdLog.message,
 		};
 	}
+
+    async logEvent(type: Type, message: string, requester?: string) {
+    await createLog({
+      timestamp: Date.now(),
+      uuid: randomUUID(),
+      type,
+      message: requester ? `[${requester}] ${message}` : message
+    });
+  }
 }
 
 export const logsService = new LogsService();
