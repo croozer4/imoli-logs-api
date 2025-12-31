@@ -1,5 +1,8 @@
 # 🚀 Logs API Microservice
 
+## Deployed on Render
+https://imoli-logs-api.onrender.com/
+
 ## Features
 - MongoDB + TypeScript + Express
 - Auth middleware (admin access, reac/create permissions)
@@ -25,5 +28,7 @@
 
 ### Tests
 `docker-compose -f docker-compose.test.yml up test`
+
+[Uploading Imoli.postman_collection.json…]()
 
 
