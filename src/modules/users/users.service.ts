@@ -1,5 +1,6 @@
 import { randomUUID } from 'crypto';
 import { createUser, findUserByUsername, Permission } from './users.repository';
+import ApiError from '@/utils/ApiError';
 
 export interface CreateUserRequest {
 	username: string;
@@ -36,10 +37,7 @@ export class UsersService {
 
 		const existingUsername = await findUserByUsername(username);
 		if (existingUsername) {
-			throw {
-				status: 409,
-				message: 'Username already exists',
-			};
+			throw new ApiError(409, 'Username already exists');
 		}
 
 		const token = randomUUID();
