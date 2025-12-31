@@ -1,0 +1,530 @@
+{
+	"info": {
+		"_postman_id": "d8802d41-e4c3-4cee-b2a2-71ff90c6a547",
+		"name": "Imoli",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39509186"
+	},
+	"item": [
+		{
+			"name": "Live API",
+			"item": [
+				{
+					"name": "Create New User (as admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "320ca9c4-ed20-4f09-bcb8-9b34b976b501",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"newuser1\",\r\n  \"permissions\": [\"read\", \"create\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/internal/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"internal",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New User (as non-admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"newuser2\",\r\n  \"permissions\": [\"read\", \"create\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://imoli-logs-api.onrender.com/internal/users",
+							"protocol": "https",
+							"host": [
+								"imoli-logs-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"internal",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Logs (read permission)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://imoli-logs-api.onrender.com/public/logs",
+							"protocol": "https",
+							"host": [
+								"imoli-logs-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"public",
+								"logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Logs (missing read permission)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "320ca9c4-ed20-4f09-bcb8-9b34b976b501",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://imoli-logs-api.onrender.com/public/logs",
+							"protocol": "https",
+							"host": [
+								"imoli-logs-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"public",
+								"logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Log by UUID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://imoli-logs-api.onrender.com/public/logs/fc1f53b6-143d-4b31-b347-ad732f61c8d8",
+							"protocol": "https",
+							"host": [
+								"imoli-logs-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"public",
+								"logs",
+								"fc1f53b6-143d-4b31-b347-ad732f61c8d8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Logs (from)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://imoli-logs-api.onrender.com/public/logs?from=1584970031274",
+							"protocol": "https",
+							"host": [
+								"imoli-logs-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"public",
+								"logs"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "1584970031274"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Logs (to)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://imoli-logs-api.onrender.com/public/logs?to=1584969746077",
+							"protocol": "https",
+							"host": [
+								"imoli-logs-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"public",
+								"logs"
+							],
+							"query": [
+								{
+									"key": "to",
+									"value": "1584969746077"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Logs (from to)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://imoli-logs-api.onrender.com/public/logs?from=1584969746077&to=1584969746977",
+							"protocol": "https",
+							"host": [
+								"imoli-logs-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"public",
+								"logs"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "1584969746077"
+								},
+								{
+									"key": "to",
+									"value": "1584969746977"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Local API",
+			"item": [
+				{
+					"name": "Create New User (as admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "320ca9c4-ed20-4f09-bcb8-9b34b976b501",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"newuser1\",\r\n  \"permissions\": [\"read\", \"create\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/internal/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"internal",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New User (as non-admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"newuser2\",\r\n  \"permissions\": [\"read\", \"create\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/internal/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"internal",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Logs (read permission)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/public/logs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"public",
+								"logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Logs (missing read permission)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "320ca9c4-ed20-4f09-bcb8-9b34b976b501",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/public/logs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"public",
+								"logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Log by UUID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/public/logs/fc1f53b6-143d-4b31-b347-ad732f61c8d8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"public",
+								"logs",
+								"fc1f53b6-143d-4b31-b347-ad732f61c8d8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Logs (from)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/public/logs?from=1584970031274",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"public",
+								"logs"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "from",
+									"value": "1584970031274"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Logs (to)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/public/logs?to=1584969746077",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"public",
+								"logs"
+							],
+							"query": [
+								{
+									"key": "to",
+									"value": "1584969746077"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Logs (from to)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization-token",
+								"value": "a5c9700a-684e-11ea-bc55-0242ac130003",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/public/logs?from=1584969746077&to=1584969746977",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"public",
+								"logs"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "1584969746077"
+								},
+								{
+									"key": "to",
+									"value": "1584969746977"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

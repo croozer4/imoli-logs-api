@@ -4,7 +4,6 @@ import errorHandler from '@/middleware/errorHandler';
 import { requireAdmin, requirePermission } from './middleware/requirePermission';
 import usersRouter from './modules/users/users.routes';
 import logsRouter from './modules/logs/logs.routes';
-import { permission } from 'process';
 
 const app = express();
 
